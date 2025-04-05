@@ -3,5 +3,4 @@
 ### Repository for our chatbot.
 
 We use NLTK - Natural Language toolkit
-
 With this you can do tokenization and stemming
