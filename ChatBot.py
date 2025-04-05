@@ -26,3 +26,9 @@ def printLines(file, n=10):
         print(line)
 
 printLines(os.path.join(corpus, "soup_of_words.txt"))
+
+def conversationalist(fileName):
+    lines = {}
+    conversations = {}
+    with open(fileName, "r", encoding="iso-8859-1") as f:
+        for line in f:
