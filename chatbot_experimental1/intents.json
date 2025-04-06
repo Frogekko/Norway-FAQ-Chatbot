@@ -188,7 +188,7 @@
     {
       "tag": "trolltunga",
       "patterns": ["What is Trolltunga?"],
-      "responses": ["Trolltunga (\"Troll's Tongue\") is another spectacular rock formation, a horizontal piece of rock jutting out about 700 meters (2,300 feet) above Lake Ringedalsvatnet. It requires a long and demanding hike."]
+      "responses": ["Trolltunga ('Troll's Tongue') is another spectacular rock formation, a horizontal piece of rock jutting out about 700 meters (2,300 feet) above Lake Ringedalsvatnet. It requires a long and demanding hike."]
     },
     {
       "tag": "visa_requirements",
@@ -243,12 +243,12 @@
     {
       "tag": "edvard_munch",
       "patterns": ["Who is Edvard Munch?"],
-      "responses": ["Edvard Munch was a famous Norwegian painter, best known for his iconic work \"The Scream.\""]
+      "responses": ["Edvard Munch was a famous Norwegian painter, best known for his iconic work 'The Scream.'"]
     },
     {
       "tag": "henrik_ibsen",
       "patterns": ["Who is Henrik Ibsen?"],
-      "responses": ["Henrik Ibsen was a highly influential Norwegian playwright, often referred to as the \"father of realism\" in theatre. His major works include \"A Doll's House\" and \"Hedda Gabler.\""]
+      "responses": ["Henrik Ibsen was a highly influential Norwegian playwright, often referred to as the 'father of realism' in theatre. His major works include 'A Doll's House' and 'Hedda Gabler.'"]
     },
     {
       "tag": "nobel_peace_prize",
