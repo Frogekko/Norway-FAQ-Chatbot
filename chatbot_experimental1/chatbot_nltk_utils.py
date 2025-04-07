@@ -15,9 +15,9 @@ def tokenize(sentence):
 def stem(word):
     return stemmer.stem(word.lower())
 
-# This function
+# This function returns a bag of words array, 1 for each known word that exists in the sentence, 0 otherwise
 def bag_of_words(tokenized_sentence, all_words):
-    tokenized_sentence = [stem(w) for w in tokenized_sentence]
+    tokenized_sentence = [stem(w) for w in tokenized_sentence]    # Applies stemming to the tokenized sentences passed
     bag = np.zeros(len(all_words), dtype=np.float32)
     for idx, w in enumerate(all_words):
         if w in tokenized_sentence:
@@ -38,7 +38,9 @@ def main():
     print(stemmed_words)
 
     # Example of how bag of words works:
-    
+    a_w = stemmed_words
+    a = ["oil", "has", "strong", "revenue"]
+    print(bag_of_words(a, a_w))    # Returns 1's for the words that were in the sentence
 
 if __name__ == "__main__":
     main()
