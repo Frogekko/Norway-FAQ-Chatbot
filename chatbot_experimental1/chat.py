@@ -9,7 +9,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 with open('intents.json', 'r', encoding='utf-8') as json_data:
     intents = json.load(json_data)
 
-FILE = "data.pth"
+FILE = "model.pth"
 data = torch.load(FILE)
 
 input_size = data["input_size"]
@@ -49,7 +49,7 @@ while True:
 
     probs = torch.softmax(output, dim=1)
     prob = probs[0][predicted.item()]
-    if prob.item() > 0.75:
+    if prob.item() > 0.70:
         for intent in intents['intents']:
             if tag == intent["tag"]:
                 print(f"{bot_name}: {random.choice(intent['responses'])}")
