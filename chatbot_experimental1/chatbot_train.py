@@ -1,37 +1,46 @@
 import json
 import numpy as np
+import nltk
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-from chatbot_nltk_utils import tokenize, stem, bag_of_words    # Imports the functions from out utilities file
+from chatbot_nltk_utils import get_wordnet_pos, tokenize, lem, bag_of_words    # Imports the functions from out utilities file
 from model import NeuralNet
 
 # Loads the intents file
 with open('intents.json', 'r', encoding='utf-8') as f:
     intents = json.load(f)
 
-all_words = []
+all_words = []    # Will store unique lemmas
 tags = []
-xy = []
-
-# Loop through each sentence in our intents patterns
-for intent in intents['intents']:
-    tag = intent['tag'] 
-    tags.append(tag)    # Adds the tags to list
-    pattern = intent['patterns']
-    for pattern in intent['patterns']:
-        word = tokenize(pattern)
-        all_words.extend(word)    # Adds patterns to words list
-        xy.append((word, tag))    # Adds to xy pair
+xy = []    # Stores tuples of (tokens, tags)
 
 # Ignore these symbols
 ignore_words = ['?', '!', '.', ',', "'s", "'", '(', ')', '/', '"']
 
-# Applies stemming to all_words list
-all_words = [stem(word) for word in all_words if word not in ignore_words]
-all_words = sorted(set(all_words))    # By turning this into a set we get rid of the duplicates in the list
+print("Processing intents...")
+# Loop through each sentence in our intents patterns
+for intent in intents['intents']:
+    tag = intent['tag'] 
+    tags.append(tag)    # Adds the tags to list
 
-tags = sorted(set(tags))    # Removes duplicates if there are any
+    for pattern in intent['patterns']:
+        tokens = tokenize(pattern)    # Tokenizes the pattern
+        xy.append((tokens, tag))    # Adds tokens and tags to xy as tuple
+
+        pos_tags = nltk.pos_tag(tokens)    # Performs POS tagging on original tokens
+
+        # Lemmatize using POS tags and add to all_words list, ignoring punctuation and symbols
+        for word, pos_tag_val in pos_tags:
+            if word not in ignore_words:
+                wordnet_tag = get_wordnet_pos(pos_tag_val)
+                lemma = lem(word, wordnet_tag)
+                all_words.append(lemma)    # Appends the valid lemma
+
+
+# Sorts the lemmatized words list and tags list and removes duplicates by turning them into sets
+all_words = sorted(set(all_words))
+tags = sorted(set(tags))
 
 # Test
 print(all_words)
@@ -41,8 +50,8 @@ print(tags)
 X_train = []
 y_train = []
 
-for (pattern_sentence, tag) in xy:
-    bag = bag_of_words(pattern_sentence, all_words)    # X: Gets a bag of words for each pattern_sentence (tokenized and stemmed pattern sentences)
+for (pattern_tokens, tag) in xy:
+    bag = bag_of_words(pattern_tokens, all_words)    # X: Gets a bag of words for each pattern sentence (tokenized and lemmatized pattern sentences)
     X_train.append(bag)
     label = tags.index(tag)    # y: Gets class labels, doesn't need one-hot enconding since we use PyTorch's CrossEntropyLoss
     y_train.append(label)
@@ -117,7 +126,7 @@ data = {
     "tags": tags
 }
 
-FILE ="data.pth"
+FILE ="model.pth"
 torch.save(data, FILE)
 
 print(f"Training Complete, File saved to {FILE}")
