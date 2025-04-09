@@ -1,23 +1,16 @@
 from flask import Flask, request, jsonify, render_template, Response
-import queue
 from threading import Thread
-import torch
-import torch.nn as nn
-from chat import #(placeholder), bot_name
-from chatbot_train import
+import queue
+import os
+from chat_group1 import generations, bot_name
+from chatbot_train_group1 import training
+
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder = "/home/engebret/testPedroChat/Api")
     
-    #Components important for chatbot, the variables are set to None, as they have no values yet.
-    encode = decode = vocab = search = None
-    loq_queue = queue
-
-    def load_model():
-        nonlocal encode, decode, vocab, search
-        if not all([encode, decode, vocab, search]):
-            encode, decode, vocab, search = """path to the bot"""
-        
+    loq_queue = queue.Queue()
+    
     @app.route("/")
     def index():
         return render_template("website.html") #må lagre senere, kan være jeg stjeler meisam sin template
@@ -25,26 +18,23 @@ def create_app():
     #this is so that the request goes through the URL
     @app.route("/api/chat", methods = ["POST"])
     def chat():
-        load_model()
         data = request.json
         u_input = data.get("message","")
-
-        max = data.get("max length", 100)
 
         if not u_input:
             return jsonify({"Error": "No Message Read"}), 400
 
-        response = #Add the model here(u_input, encode, decode, vocab, search, max_length = max)
-        return jsonify({"Response": response})
+        response = generations(u_input)
+        return jsonify({"bot_name": bot_name, "Response": response})
     
     @app.route("/api/train-more", methods=["POST"])
     def train_more():
         data = request.json
         iter = data.get("iterations", 1000)
-        batch_size = data.get("Batch_size", 64)
+        batch_size = data.get("Batch_Size", 64)
 
-        def background_train(log_queue, iterations, batch_size):
-            #placeholder_train_model()
+        def background_train(queue, iter, batch_size):
+            training(iter, batch_size, message=False)
         
         thread = Thread(target=background_train, args=(loq_queue, iter, batch_size))
         thread.start()
@@ -59,5 +49,5 @@ def create_app():
                 yield f"data: {message}\n\n"
                 if "[Training] Done" in message:
                     break
-            return Response(generate(), mimetype="text/event_stream")
+        return Response(generate(), mimetype="text/event_stream")
     return app
