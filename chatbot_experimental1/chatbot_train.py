@@ -6,6 +6,7 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from chatbot_nltk_utils import get_wordnet_pos, tokenize, lem, bag_of_words    # Imports the functions from out utilities file
 from model import NeuralNet
+from sklearn.model_selection import train_test_split
 
 # Loads the intents file
 with open('intents.json', 'r', encoding='utf-8') as f:
@@ -43,8 +44,8 @@ all_words = sorted(set(all_words))
 tags = sorted(set(tags))
 
 # Test
-print(all_words)
-print(tags)
+#print(all_words)
+#print(tags)
 
 # Create the training data
 X_train = []
@@ -65,13 +66,13 @@ hidden_size = 32
 input_size = len(all_words)
 output_size = len(tags)
 learning_rate = 0.0001
-num_epochs = 1000
+num_epochs = 800
 
 # Test
-print(input_size)
-print(len(all_words))
-print(output_size)
-print(len(tags))
+#print(input_size)
+#print(len(all_words))
+#print(output_size)
+#print(len(tags))
 
 # Class for out dataset
 class ChatDataset(Dataset):

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+</head>
+<body>
+  <div class="chat-container">
+    <button id="train-but">Start Training</button>
+    <input type="number" id="train-iterations" placeholder="Iterations" value="1000" min="1"/>
+    <div id="training-log" class="log-box"></div>
+    <div id="chat-box" class="chat-box"></div>
+    <form id="chat-form">
+      <input type="text" id="user-input" placeholder="Type your message..." required />
+      <input type="number" id="max-length-input" placeholder="Max Response Length" value="20" min="5" max="100" />
+      <button type="submit">Send</button>
+    </form>
+
+  </div>
+  <script src="{{ url_for('static', filename='ChatScript.js') }}"></script>
+</body>
+</html>
