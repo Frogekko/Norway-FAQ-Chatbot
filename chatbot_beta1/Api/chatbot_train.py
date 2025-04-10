@@ -1,11 +1,12 @@
+# This file imports utilities from the chatbot_nltk_utils.py in order to train our model
 import json
 import numpy as np
 import nltk
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-from chatbot_nltk_utils_group1 import get_wordnet_pos, tokenize, lem, bag_of_words    # Imports the functions from out utilities file
-from model_group1 import NeuralNet
+from chatbot_beta1.Api.chatbot_nltk_utils import get_wordnet_pos, tokenize, lem, bag_of_words    # Imports the functions from out utilities file
+from chatbot_beta1.Api.model import NeuralNet
 
 def training(intents_file = "intents.json", 
     batch_size = 32,
@@ -110,7 +111,7 @@ def training(intents_file = "intents.json",
     if message:
         print(f'Final loss, loss={loss.item():.4f}')
 
-    # Save the data
+    # Saves the data
     data = {
         "model_state": model.state_dict(),
         "input_size": input_size,

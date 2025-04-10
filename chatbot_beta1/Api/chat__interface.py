@@ -2,8 +2,8 @@ from flask import Flask, request, jsonify, render_template, Response
 from threading import Thread
 import queue
 import os
-from chat_group1 import generations, bot_name
-from chatbot_train_group1 import training
+from chatbot_beta1.Api.chat import generations, bot_name
+from chatbot_beta1.Api.chatbot_train import training
 
 
 def create_app():

@@ -6,7 +6,7 @@ import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from chatbot_nltk_utils import get_wordnet_pos, tokenize, lem, bag_of_words    # Imports the functions from out utilities file
 from model import NeuralNet
-from sklearn.model_selection import train_test_split
+#from sklearn.model_selection import train_test_split
 
 # Loads the intents file
 with open('intents.json', 'r', encoding='utf-8') as f:

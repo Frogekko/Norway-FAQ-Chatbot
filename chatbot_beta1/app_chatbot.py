@@ -1,7 +1,7 @@
 import sys
 sys.path.append('/home/engebret/testPedroChat/Api')
 
-from Api.chat__interface_group1 import create_app
+from chatbot_beta1.Api.chat__interface import create_app
 
 Mimir_app = create_app()
 

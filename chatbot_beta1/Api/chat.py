@@ -2,8 +2,8 @@ import random
 import json
 import torch
 import os
-from model_group1 import NeuralNet
-from chatbot_nltk_utils_group1 import bag_of_words, tokenize
+from chatbot_beta1.Api.model import NeuralNet
+from chatbot_beta1.Api.chatbot_nltk_utils import bag_of_words, tokenize
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
