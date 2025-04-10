@@ -54,15 +54,3 @@ button {
   color: white;
   cursor: pointer;
 }
-
-.log-box {
-  height: 150px;
-  overflow-y: auto;
-  background: #f0f0f0;
-  font-size: 13px;
-  padding: 10px;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  font-family: monospace;
-  white-space: pre-wrap;
-}

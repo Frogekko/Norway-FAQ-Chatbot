@@ -1,5 +1,9 @@
+import os
 import sys
-sys.path.append('/home/engebret/group1_chatbot/Api')
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+api_path = os.path.join(basedir, "Api")
+sys.path.append(api_path)
 
 from Api.chat_interface import create_app
 

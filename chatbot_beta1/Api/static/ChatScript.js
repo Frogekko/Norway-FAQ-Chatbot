@@ -31,55 +31,6 @@ document.getElementById("chat-form").addEventListener("submit", async function(e
   }
 });
 
-document.getElementById("train-but").addEventListener("click", async () => {
-  const iterationsInput = document.getElementById("train-iterations");
-  const iterations = parseInt(iterationsInput.value, 10) || 1000;
-  const btn = document.getElementById("train-but");
-  const logBox = document.getElementById("training-log");
-
-  btn.disabled = true;
-  btn.textContent = "Training...";
-  logBox.textContent = "";
-
-  try {
-    const response = await fetch("/api/train-more", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ iterations: 1000, Batch_Size: 64 })
-    });
-
-    if (!response.ok) throw new Error("Failed to start training");
-
-    const evtSource = new EventSource("/api/train-stream");
-
-    evtSource.onmessage = (event) => {
-      console.log("Recieved Training Message:", event.data);
-      logBox.textContent += `${event.data}\n`;
-      logBox.scrollTop = logBox.scrollHeight;
-
-      if (event.data.includes("[Training] Done")) {
-        btn.disabled = false;
-        btn.textContent = "Start Training";
-        evtSource.close();
-      }
-    };
-
-    evtSource.onerror = (error) => {
-      console.error("EventSource error:", error);
-      logBox.textContent += "\n[Error] Connection lost to training stream.";
-      btn.disabled = false;
-      btn.textContent = "Start Training";
-      evtSource.close();
-    };
-
-  } catch (error) {
-    console.error("Training initiation error:", error);
-    logBox.textContent += "[Error] Could not start training.";
-    btn.disabled = false;
-    btn.textContent = "Start Training";
-  }
-});
-
 
 function addMessage(sender, text) {
   const chatBox = document.getElementById("chat-box");
