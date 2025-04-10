@@ -24,7 +24,7 @@ def create_app():
             return jsonify({"Error": "No Message Read"}), 400
 
         response = generations(u_input)
-        return jsonify({"bot_name": bot_name, "Response": response})
+        return jsonify({"bot_name": bot_name, "response": response})
     
     @app.route("/api/train-more", methods=["POST"])
     def train_more():
@@ -51,7 +51,11 @@ def create_app():
     def train_stream():
         def generate():
             while True:
-                message = loq_queue.get()
+                try:
+                    message = loq_queue.get(timeout=5)
+                except:
+                    print("Nothing in Queue")
+                    continue
                 print(f"Sending message to client: {message}")
                 yield f"data: {message}\n\n"
                 if "[Training] Done" in message:
