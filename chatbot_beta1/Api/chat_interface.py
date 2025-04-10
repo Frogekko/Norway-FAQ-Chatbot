@@ -9,12 +9,12 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 template_dir = os.path.join(basedir, "static")
 
 def create_app():
-    
-    app = Flask(__name__, template_folder=template_dir) #must be replaced, but it is the folder that has the 
+    #Initializes flask with template directory
+    app = Flask(__name__, template_folder=template_dir)
 
     @app.route("/") #creates 
     def index():
-        return render_template("website.html", bot_name = bot_name) #puts the bot name in the html
+        return render_template("website.html", bot_name = bot_name) #puts the bot name in the html frontend
     
     #this is so that the request goes through the URL
     @app.route("/api/chat", methods = ["POST"]) #initializes the button
