@@ -2,8 +2,8 @@ import random
 import json
 import torch
 import os
-from chatbot_beta1.Api.model import NeuralNet
-from chatbot_beta1.Api.chatbot_nltk_utils import bag_of_words, tokenize
+from model import NeuralNet
+from chatbot_nltk_utils import bag_of_words, tokenize
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -56,6 +56,6 @@ def generations(message):
     if prob.item() > 0.70:
         for intent in intents['intents']:
             if tag == intent["tag"]:
-                return random.choice(intent['responses'])
+                return {"bot_name": bot_name, "Response": random.choice(intent["responses"])}
     else:
-        return (f"{bot_name}: {random.choice(fallback_suggestions)}")
+        return {"bot_name": bot_name, "Response": random.choice(fallback_suggestions)}

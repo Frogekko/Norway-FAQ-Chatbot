@@ -5,9 +5,9 @@ from nltk.stem.wordnet import WordNetLemmatizer    # We decided to go for a lemm
 from nltk.corpus import wordnet    # Needed for POS tag mapping
 
 # Run the code with these lines once to download, once downloaded these lines can be commented out or deleted
-#nltk.download('punkt')
-#nltk.download('wordnet')
-#nltk.download('averaged_perceptron_tagger_eng')
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger_eng')
 
 lemmatizer = WordNetLemmatizer()
 

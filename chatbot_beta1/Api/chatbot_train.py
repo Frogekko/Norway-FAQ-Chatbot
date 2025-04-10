@@ -1,19 +1,20 @@
-# This file imports utilities from the chatbot_nltk_utils.py in order to train our model
 import json
 import numpy as np
 import nltk
 import torch
+import queue
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-from chatbot_beta1.Api.chatbot_nltk_utils import get_wordnet_pos, tokenize, lem, bag_of_words    # Imports the functions from out utilities file
-from chatbot_beta1.Api.model import NeuralNet
+from chatbot_nltk_utils import get_wordnet_pos, tokenize, lem, bag_of_words    # Imports the functions from out utilities file
+from model import NeuralNet
 
-def training(intents_file = "intents.json", 
+def training( 
     batch_size = 32,
-    hidden_size = 32,
-    learning_rate = 0.0001,
     num_epochs = 1000,
-    message = True
+    hidden_size = 32,
+    intents_file = "/home/engebret/group1_chatbot/Api/intents.json",
+    learning_rate = 0.0001,
+    message = None
     ):
 
     # Loads the intents file
@@ -105,13 +106,13 @@ def training(intents_file = "intents.json",
             loss.backward()
             optimizer.step()
 
-        if message and (epoch + 1) % 100 == 0:
+        if message and isinstance(message, queue.Queue) and (epoch + 1) % 100 == 0:
             print(f'epoch {epoch+1}/{num_epochs}, loss={loss.item():.4f}')
 
-    if message:
+    if message and isinstance(message, queue.Queue):
         print(f'Final loss, loss={loss.item():.4f}')
 
-    # Saves the data
+    # Save the data
     data = {
         "model_state": model.state_dict(),
         "input_size": input_size,
@@ -123,5 +124,5 @@ def training(intents_file = "intents.json",
 
     FILE ="model.pth"
     torch.save(data, FILE)
-    if message:
+    if message and isinstance(message, queue.Queue):
         print(f"Training Complete, File saved to {FILE}")

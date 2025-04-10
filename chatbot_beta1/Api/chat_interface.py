@@ -1,19 +1,18 @@
 from flask import Flask, request, jsonify, render_template, Response
 from threading import Thread
 import queue
-import os
-from chatbot_beta1.Api.chat import generations, bot_name
-from chatbot_beta1.Api.chatbot_train import training
+from chat import generations, bot_name
+from chatbot_train import training
 
+loq_queue = queue.Queue()
 
 def create_app():
-    app = Flask(__name__, template_folder = "/home/engebret/testPedroChat/Api")
-    
-    loq_queue = queue.Queue()
+    app = Flask(__name__, template_folder='/home/engebret/group1_chatbot/Api/static')
+
     
     @app.route("/")
     def index():
-        return render_template("website.html") #må lagre senere, kan være jeg stjeler meisam sin template
+        return render_template("website.html", bot_name = bot_name) 
     
     #this is so that the request goes through the URL
     @app.route("/api/chat", methods = ["POST"])
@@ -33,19 +32,27 @@ def create_app():
         iter = data.get("iterations", 1000)
         batch_size = data.get("Batch_Size", 64)
 
+        print("Training started with iterations:", iter, "and batch size:", batch_size)
+        
         def background_train(queue, iter, batch_size):
-            training(iter, batch_size, message=False)
+            training(batch_size, iter, message=queue)
         
         thread = Thread(target=background_train, args=(loq_queue, iter, batch_size))
         thread.start()
         
         return jsonify({"status":"Training started","iterations":iter})
+
+    @app.route("/test-queue")
+    def test_queue():
+        loq_queue.put("Test message to frontend!")
+        return "Message sent to queue!"
     
     @app.route("/api/train-stream")
     def train_stream():
         def generate():
             while True:
                 message = loq_queue.get()
+                print(f"Sending message to client: {message}")
                 yield f"data: {message}\n\n"
                 if "[Training] Done" in message:
                     break
