@@ -60,7 +60,7 @@ hidden_size = 32
 input_size = len(all_words)
 output_size = len(tags)
 learning_rate = 0.0001
-num_epochs = 1000
+num_epochs = 500
 validation_split = 0.2    # 20% of data used for validation
 
 # Class for our dataset
