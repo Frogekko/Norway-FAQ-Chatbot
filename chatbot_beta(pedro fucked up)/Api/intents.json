@@ -1,0 +1,793 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi",
+        "Hey",
+        "Hello",
+        "Good day",
+        "Good morning",
+        "Good evening",
+        "Is anyone there?",
+        "Yo",
+        "What's up?",
+        "Sup"
+        ],
+      "responses": [
+        "Hello!",
+        "Hi there, ask me anything about Norway!",
+        "Greetings! How can I help with your Norway questions today?",
+        "Hey! What do you want to know about Norway?"
+        ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "Quit",
+        "Exit",
+        "I'm done",
+        "See ya",
+        "Later",
+        "Have a good day"
+        ],
+      "responses": [
+        "Goodbye! Hope I helped.",
+        "See you later, thanks for chatting!",
+        "Have a nice day!",
+        "Bye! Come back if you have more questions about Norway."
+        ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Thanks a lot!",
+        "Appreciate it",
+        "Okay thank you",
+        "Cool thanks",
+        "Much appreciated"
+        ],
+      "responses": [
+        "You're welcome!",
+        "Happy to help with info about Norway!",
+        "Any time!",
+        "My pleasure!"
+        ]
+    },
+    {
+      "tag": "capital",
+      "patterns": [
+        "What is the capital of Norway?",
+        "Norway's capital?",
+        "Which city is the capital of Norway?",
+        "Tell me Norway's capital city",
+        "Capital of Norway",
+        "What city serves as the capital?",
+        "Is Oslo the capital?"
+      ],
+      "responses": ["The capital of Norway is Oslo."]
+    },
+    {
+      "tag": "location",
+      "patterns": [
+        "Where is Norway located?",
+        "Norway's location?",
+        "Tell me where Norway is",
+        "Which part of Europe is Norway in?",
+        "Location of Norway",
+        "Where can I find Norway on a map?",
+        "Geographical location of Norway"
+      ],
+      "responses": ["Norway is located in Northern Europe, occupying the western part of the Scandinavian Peninsula."]
+    },
+    {
+      "tag": "borders",
+      "patterns": [
+        "What countries border Norway?",
+        "Which countries share a border with Norway?",
+        "Norway's neighboring countries?",
+        "Tell me the countries next to Norway",
+        "Neighbors of Norway",
+        "Bordering countries",
+        "Who are Norway's neighbours?"
+      ],
+      "responses": ["Norway shares borders with Sweden, Finland, and Russia."]
+    },
+    {
+      "tag": "geography_famous",
+      "patterns": [
+        "What is Norway famous for geographically?",
+        "What are Norway's main geographical features?",
+        "Norway geography highlights?",
+        "Tell me about Norway's landscape",
+        "Famous nature in Norway?",
+        "What makes Norway's geography special?",
+        "Fjords and mountains in Norway?"
+      ],
+      "responses": ["Norway is famous for its deep fjords, mountains, glaciers, and a long coastline."]
+    },
+    {
+      "tag": "fjords_definition",
+      "patterns": [
+        "What are fjords?",
+        "Define fjord",
+        "Explain what a fjord is",
+        "How are fjords formed?",
+        "Tell me about fjords",
+        "Fjord definition",
+        "What's special about Norwegian fjords?"
+      ],
+      "responses": ["Fjords are long, narrow inlets with steep sides or cliffs, created by glacial erosion. Norway has many famous fjords like Geirangerfjord and Nærøyfjord."]
+    },
+    {
+      "tag": "coastline",
+      "patterns": [
+        "Does Norway have a coastline?",
+        "Tell me about Norway's coast",
+        "Is Norway coastal?",
+        "How long is the Norwegian coastline?",
+        "Norway coast information",
+        "Does Norway touch the sea?"
+      ],
+      "responses": ["Yes, Norway has one of the longest and most rugged coastlines in the world, dotted with thousands of islands."]
+    },
+    {
+      "tag": "highest_mountain",
+      "patterns": [
+        "What is the highest mountain in Norway?",
+        "Norway's tallest peak?",
+        "Highest point in Norway?",
+        "Tell me the name of Norway's highest mountain",
+        "Galdhøpiggen height?",
+        "Which mountain is the tallest?"
+      ],
+      "responses": ["The highest mountain in Norway is Galdhøpiggen, standing at 2,469 meters (8,100 feet)."]
+    },
+    {
+      "tag": "northern_lights_visibility",
+      "patterns": [
+        "Can you see the Northern Lights in Norway?",
+        "Is it possible to see Aurora Borealis in Norway?",
+        "Does Norway have Northern Lights?",
+        "Where to see Northern Lights in Norway?",
+        "Seeing auroras in Norway?",
+        "Northern Lights visibility?"
+      ],
+      "responses": ["Yes, Northern Norway, above the Arctic Circle, is one of the best places in the world to see the Northern Lights (Aurora Borealis), especially during winter."]
+    },
+    {
+      "tag": "northern_lights_best_time",
+      "patterns": [
+        "When is the best time to see the Northern Lights in Norway?",
+        "Best season for Aurora Borealis in Norway?",
+        "When should I visit Norway for Northern Lights?",
+        "Northern Lights season Norway?",
+        "Optimal time for auroras?",
+        "Months to see northern lights?"
+      ],
+      "responses": ["The best time to see the Northern Lights in Norway is typically between late September and late March, when the nights are long and dark."]
+    },
+    {
+      "tag": "midnight_sun",
+      "patterns": [
+        "What is the Midnight Sun?",
+        "Explain the Midnight Sun phenomenon",
+        "Midnight Sun definition?",
+        "Where can you see the Midnight Sun in Norway?",
+        "Tell me about the Midnight Sun",
+        "24 hour daylight Norway?"
+      ],
+      "responses": ["The Midnight Sun is a natural phenomenon occurring in summer months in places north of the Arctic Circle (like Northern Norway), where the sun remains visible 24 hours a day."]
+    },
+    {
+      "tag": "islands",
+      "patterns": [
+        "What large islands belong to Norway?",
+        "Does Norway have big islands?",
+        "Tell me about Norwegian islands",
+        "Which islands does Norway own?",
+        "Norway's main islands?",
+        "Are there islands like Svalbard?"
+      ],
+      "responses": ["Norway administers several large islands and archipelagos, including Svalbard and Jan Mayen in the Arctic."]
+    },
+    {
+      "tag": "mountainous",
+      "patterns": [
+        "Is Norway mountainous?",
+        "Does Norway have many mountains?",
+        "Tell me about the mountains in Norway",
+        "How mountainous is Norway?",
+        "Norway terrain mountains?",
+        "Lots of mountains in Norway?"
+      ],
+      "responses": ["Yes, Norway is a very mountainous country, with large parts dominated by the Scandinavian Mountains range."]
+    },
+    {
+      "tag": "language",
+      "patterns": [
+        "What is the official language of Norway?",
+        "What language do they speak in Norway?",
+        "Norwegian language?",
+        "Official languages spoken in Norway?",
+        "Tell me about the language in Norway",
+        "Do they speak Bokmål or Nynorsk?"
+      ],
+      "responses": ["The official language of Norway is Norwegian. There are two official written forms: Bokmål and Nynorsk. Sámi languages also have official status in some areas."]
+    },
+    {
+      "tag": "currency",
+      "patterns": [
+        "What currency is used in Norway?",
+        "What is the money in Norway?",
+        "Norway currency?",
+        "NOK currency?",
+        "Tell me the currency used in Norway",
+        "What money do I need for Norway?"
+      ],
+      "responses": ["The official currency of Norway is the Norwegian Krone (NOK)."]
+    },
+    {
+      "tag": "monarchy",
+      "patterns": [
+        "Is Norway a monarchy?",
+        "Does Norway have a king or queen?",
+        "Tell me about Norway's monarchy",
+        "Norway government monarchy?",
+        "Who is the monarch of Norway?",
+        "Is Norway ruled by a king?"
+      ],
+      "responses": ["Yes, Norway is a constitutional monarchy with a parliamentary system of government. King Harald V is the current monarch."]
+    },
+    {
+      "tag": "population",
+      "patterns": [
+        "What is the population of Norway?",
+        "How many people live in Norway?",
+        "Norway population size?",
+        "Tell me Norway's population",
+        "Number of inhabitants in Norway?",
+        "Population details Norway"
+      ],
+      "responses": ["The population of Norway is approximately 5.5 million people."]
+    },
+    {
+      "tag": "brunost",
+      "patterns": [
+        "What is 'brunost'?",
+        "Tell me about brunost",
+        "What is Norwegian brown cheese?",
+        "Explain brunost cheese",
+        "Brunost information",
+        "What does brunost taste like?"
+      ],
+      "responses": ["Brunost (brown cheese) is a traditional Norwegian food made from whey, milk, and cream, known for its sweet, caramel-like flavor."]
+    },
+    {
+      "tag": "popular_dish",
+      "patterns": [
+        "What is a popular Norwegian dish?",
+        "What food is Norway known for?",
+        "Popular food in Norway?",
+        "Tell me about Norwegian cuisine",
+        "Famous Norwegian dishes?",
+        "What do people eat in Norway?"
+      ],
+      "responses": ["Popular Norwegian dishes include Fårikål (mutton and cabbage stew - the national dish), kjøttkaker (meatballs), salmon, and various seafood dishes."]
+    },
+    {
+      "tag": "national_day",
+      "patterns": [
+        "What is Norway's National Day?",
+        "When is Norwegian Constitution Day?",
+        "Norway national holiday date?",
+        "Tell me about May 17th in Norway",
+        "Syttende Mai date?",
+        "When is Norway's independence day?"
+      ],
+      "responses": ["Norway's National Day, also known as Constitution Day, is celebrated on May 17th (Syttende Mai)."]
+    },
+    {
+      "tag": "national_day_celebration",
+      "patterns": [
+        "How do Norwegians celebrate May 17th?",
+        "What happens on Norway's National Day?",
+        "Syttende Mai celebrations?",
+        "Tell me how Constitution Day is celebrated",
+        "May 17th traditions Norway?",
+        "How is the national day celebrated?"
+      ],
+      "responses": ["Norwegians celebrate May 17th with children's parades, traditional costumes (bunad), flags, music, ice cream, and hot dogs."]
+    },
+    {
+      "tag": "koselig",
+      "patterns": [
+        "What is 'koselig'?",
+        "Define koselig",
+        "Explain the meaning of koselig",
+        "What does koselig mean in Norway?",
+        "Tell me about the concept of koselig",
+        "Is koselig like hygge?"
+      ],
+      "responses": ["'Koselig' is a Norwegian word similar to the Danish 'hygge'. It describes a feeling of coziness, intimacy, warmth, and simple pleasures, often shared with loved ones."]
+    },
+    {
+      "tag": "english_proficiency",
+      "patterns": [
+        "Are Norwegians good at English?",
+        "Do people in Norway speak English?",
+        "How common is English in Norway?",
+        "English speaking level in Norway",
+        "Can I get by with English in Norway?",
+        "Norwegian English skills",
+        "How well is English spoken?"
+      ],
+      "responses": ["Yes, proficiency in English is generally very high in Norway, especially among younger generations."]
+    },
+    {
+      "tag": "bunad",
+      "patterns": [
+        "What is the 'bunad'?",
+        "Tell me about the bunad",
+        "What is a Norwegian traditional costume?",
+        "Explain bunad",
+        "Bunad information",
+        "What do Norwegians wear on May 17th?"
+      ],
+      "responses": ["A bunad is a traditional Norwegian folk costume, with designs specific to different regions. They are often worn for celebrations like May 17th or weddings."]
+    },
+    {
+      "tag": "sami_people",
+      "patterns": [
+        "What are the Sámi people?",
+        "Who are the Sámi people?",
+        "Tell me about the Sámi people",
+        "Information about Sámi",
+        "Sámi indigenous people",
+        "Who are the Sami?",
+        "What is Sami?",
+        "Explain Sámi culture"
+      ],
+      "responses": ["The Sámi are the indigenous Finno-Ugric people inhabiting the Arctic area of Sápmi, which today encompasses parts of northern Norway, Sweden, Finland, and Russia. They have their own distinct culture, languages, and traditions."]
+    },
+    {
+      "tag": "skiing_popularity",
+      "patterns": [
+        "Is skiing popular in Norway?",
+        "Do Norwegians ski a lot?",
+        "How popular is skiing in Norway?",
+        "Tell me about skiing in Norway",
+        "Skiing culture Norway?",
+        "Is Norway famous for skiing?"
+      ],
+      "responses": ["Yes, skiing is extremely popular in Norway and is considered a national pastime. Norwegians often say they are \"born with skis on their feet.\""]
+    },
+    {
+      "tag": "vikings",
+      "patterns": [
+        "Who were the Vikings?",
+        "Tell me about the Vikings",
+        "Information about Vikings in Norway",
+        "Explain the Viking age",
+        "Where did Vikings come from?",
+        "Viking history Norway"
+      ],
+      "responses": ["The Vikings were Norse seafarers who, during the Viking Age (roughly 8th to 11th centuries), raided, traded, explored, and settled wide areas of Europe, Asia, and the North Atlantic islands. Many originated from Norway."]
+    },
+    {
+      "tag": "independence",
+      "patterns": [
+        "When did Norway become independent?",
+        "Norway independence date?",
+        "How did Norway gain independence?",
+        "Tell me about Norwegian independence",
+        "When did Norway separate from Sweden?",
+        "History of Norway's independence"
+      ],
+      "responses": ["Norway adopted its constitution in 1814, but full independence from Sweden was achieved peacefully in 1905."]
+    },
+    {
+      "tag": "eu_membership",
+      "patterns": [
+        "Is Norway part of the European Union (EU)?",
+        "Is Norway in the EU?",
+        "Does Norway belong to the EU?",
+        "Tell me about Norway's EU membership status",
+        "Why isn't Norway in the EU?",
+        "EU membership Norway"
+      ],
+      "responses": ["No, Norway is not a member of the European Union. Norwegians have voted against membership in referendums twice (1972 and 1994)."]
+    },
+    {
+      "tag": "eea_membership",
+      "patterns": [
+        "Is Norway part of the European Economic Area (EEA)?",
+        "Is Norway in the EEA?",
+        "Does Norway belong to the EEA?",
+        "Tell me about Norway's EEA membership",
+        "What is the EEA agreement for Norway?",
+        "EEA membership Norway"
+      ],
+      "responses": ["Yes, Norway is part of the EEA Agreement, which allows it access to the EU's single market."]
+    },
+    {
+      "tag": "government_type",
+      "patterns": [
+        "What kind of government does Norway have?",
+        "How is Norway governed?",
+        "Norway's system of government?",
+        "Tell me about the Norwegian government",
+        "Is Norway a democracy?",
+        "Government structure Norway"
+      ],
+      "responses": ["Norway is a parliamentary constitutional monarchy. Power is divided between the Parliament (Stortinget), the government (led by the Prime Minister), and the courts."]
+    },
+    {
+      "tag": "oil_resources",
+      "patterns": [
+        "Does Norway have oil?",
+        "Tell me about Norway's oil reserves",
+        "Is Norway rich in oil?",
+        "Norway oil and gas industry?",
+        "Where does Norway get its oil?",
+        "Oil production Norway"
+      ],
+      "responses": ["Yes, Norway is a major producer and exporter of oil and natural gas, discovered in the North Sea in the late 1960s. This has significantly contributed to its wealth."]
+    },
+    {
+      "tag": "storting",
+      "patterns": [
+        "What is the Storting?",
+        "Explain the Stortinget",
+        "What does the Norwegian parliament do?",
+        "Tell me about the Storting",
+        "Norway parliament name?",
+        "Function of the Storting"
+      ],
+      "responses": ["The Storting (or Stortinget) is the supreme legislature (parliament) of Norway, located in Oslo."]
+    },
+    {
+      "tag": "cost_of_visit",
+      "patterns": [
+        "Is Norway expensive to visit?",
+        "How expensive is Norway?",
+        "Cost of traveling in Norway?",
+        "Is Norway costly for tourists?",
+        "Norway prices expensive?",
+        "Budget for Norway trip",
+        "Tell me about the cost of visiting Norway"
+      ],
+      "responses": ["Yes, Norway is generally considered one of the more expensive countries in Europe and the world to visit, especially regarding accommodation, food, and alcohol."]
+    },
+    {
+      "tag": "travel_methods",
+      "patterns": [
+        "What is the best way to travel around Norway?",
+        "How to get around in Norway?",
+        "Transportation options in Norway?",
+        "Best transport method Norway?",
+        "Tell me how to travel in Norway",
+        "Driving vs train in Norway?"
+      ],
+      "responses": ["Depending on the distance and region, popular ways to travel include driving (car rentals), trains (like the scenic Bergen Railway), buses, domestic flights, and coastal ferries (like Hurtigruten)."]
+    },
+    {
+      "tag": "hurtigruten",
+      "patterns": [
+        "What is Hurtigruten?",
+        "Tell me about the Hurtigruten ferry",
+        "Explain Hurtigruten",
+        "Hurtigruten coastal voyage?",
+        "What does Hurtigruten do?",
+        "Is Hurtigruten a cruise?"
+      ],
+      "responses": ["Hurtigruten is a famous Norwegian coastal ferry service that travels along the coast between Bergen and Kirkenes, stopping at many ports. It functions as transport, postal service, and a popular cruise route."]
+    },
+    {
+      "tag": "popular_cities",
+      "patterns": [
+        "What are some popular cities to visit in Norway besides Oslo?",
+        "Best cities to visit in Norway?",
+        "Recommend cities in Norway",
+        "Other main cities in Norway?",
+        "Tell me about popular Norwegian cities",
+        "Where else to go besides Oslo?"
+      ],
+      "responses": ["Other popular cities include Bergen (known for Bryggen wharf), Stavanger (gateway to Pulpit Rock), Trondheim (historic city with Nidaros Cathedral), and Tromsø (Arctic city, great for Northern Lights)."]
+    },
+    {
+      "tag": "pulpit_rock",
+      "patterns": [
+        "What is Pulpit Rock (Preikestolen)?",
+        "Tell me about Pulpit Rock",
+        "Explain Preikestolen",
+        "Pulpit Rock location?",
+        "Information about Preikestolen cliff",
+        "Is Pulpit Rock famous?"
+      ],
+      "responses": ["Pulpit Rock (Preikestolen) is a famous tourist attraction: a steep cliff rising 604 meters (1,982 feet) above Lysefjorden, known for its large, flat top."]
+    },
+    {
+      "tag": "trolltunga",
+      "patterns": [
+        "What is Trolltunga?",
+        "Tell me about Trolltunga",
+        "Explain Troll's Tongue rock formation",
+        "Trolltunga hike information?",
+        "Where is Trolltunga?",
+        "Is Trolltunga difficult to hike?"
+      ],
+      "responses": ["Trolltunga (\"Troll's Tongue\") is another spectacular rock formation, a horizontal piece of rock jutting out about 700 meters (2,300 feet) above Lake Ringedalsvatnet. It requires a long and demanding hike."]
+    },
+    {
+      "tag": "visa_requirements",
+      "patterns": [
+        "Do I need a visa to visit Norway?",
+        "Norway visa requirements?",
+        "Tell me about visa for Norway",
+        "Do tourists need a visa for Norway?",
+        "Schengen visa Norway?",
+        "How to get a visa for Norway?"
+      ],
+      "responses": ["Whether you need a visa depends on your nationality. Norway is part of the Schengen Area. Citizens of EU/EEA countries generally don't need a visa. Others should check specific requirements."]
+    },
+    {
+      "tag": "emergency_number",
+      "patterns": [
+        "What is the emergency phone number in Norway?",
+        "Emergency number Norway?",
+        "How to call for help in Norway?",
+        "Police fire ambulance number Norway?",
+        "Tell me the emergency contact numbers",
+        "911 equivalent in Norway?"
+      ],
+      "responses": ["The main emergency numbers are: 110 for Fire, 112 for Police, and 113 for Ambulance/Medical emergencies."]
+    },
+    {
+      "tag": "tap_water",
+      "patterns": [
+        "Can you drink tap water in Norway?",
+        "Is Norwegian tap water safe to drink?",
+        "Tap water safety Norway?",
+        "Tell me about drinking water in Norway",
+        "Is the tap water drinkable?",
+        "Can I drink from the tap?"
+      ],
+      "responses": ["Yes, tap water in Norway is generally of very high quality and safe to drink throughout the country."]
+    },
+    {
+      "tag": "best_time_to_visit",
+      "patterns": [
+        "What is the best time of year to visit Norway?",
+        "When should I travel to Norway?",
+        "Best season to visit Norway?",
+        "Tell me the best months to go to Norway",
+        "Norway travel season recommendations?",
+        "Ideal time for a trip to Norway?"
+      ],
+      "responses": ["The best time depends on what you want to do. Summer (June-August) offers milder weather, long daylight hours (Midnight Sun in the north), and is ideal for hiking and fjord exploration. Winter (November-March) is best for Northern Lights, skiing, and snow activities."]
+    },
+    {
+      "tag": "svalbard",
+      "patterns": [
+        "What is Svalbard?",
+        "Tell me about Svalbard",
+        "Explain the Svalbard archipelago",
+        "Where is Svalbard located?",
+        "Information about Svalbard",
+        "Is Svalbard part of Norway?"
+      ],
+      "responses": ["Svalbard is a Norwegian archipelago located in the Arctic Ocean, halfway between mainland Norway and the North Pole. It's known for its rugged terrain, glaciers, polar bears, and the Global Seed Vault."]
+    },
+    {
+      "tag": "safety",
+      "patterns": [
+        "Is Norway a safe country?",
+        "How safe is Norway for tourists?",
+        "Crime rate in Norway?",
+        "Tell me about safety in Norway",
+        "Is Norway dangerous?",
+        "Safety considerations Norway"
+      ],
+      "responses": ["Yes, Norway is generally considered a very safe country with low crime rates."]
+    },
+    {
+      "tag": "welfare_state",
+      "patterns": [
+        "What is the Norwegian welfare state?",
+        "Tell me about Norway's welfare system",
+        "Explain the welfare state in Norway",
+        "Norway social security system?",
+        "How does the Norwegian welfare model work?",
+        "Benefits of welfare state Norway?"
+      ],
+      "responses": ["Norway has a comprehensive welfare state model, funded by taxes and oil revenues, providing universal healthcare, free education (including university), generous parental leave, and strong social safety nets."]
+    },
+    {
+      "tag": "vinmonopolet",
+      "patterns": [
+        "What is Vinmonopolet?",
+        "Where can I buy alcohol in Norway?",
+        "Explain Vinmonopolet",
+        "Tell me about alcohol sales in Norway",
+        "State alcohol monopoly Norway?",
+        "Buying wine or spirits in Norway"
+      ],
+      "responses": ["Vinmonopolet is the state-owned company with a monopoly on selling alcoholic beverages with an alcohol content higher than 4.75% ABV in Norway."]
+    },
+    {
+      "tag": "trolls",
+      "patterns": [
+        "Does Norway have trolls?",
+        "Are trolls real in Norway?",
+        "Tell me about Norwegian trolls",
+        "Myth of trolls in Norway?",
+        "Explain trolls",
+        "Where do trolls come from?"
+      ],
+      "responses": ["Trolls are mythical creatures from Norse mythology and Scandinavian folklore, often depicted in Norwegian culture and souvenirs, but they are creatures of legend, not reality."]
+    },
+    {
+      "tag": "major_industries",
+      "patterns": [
+        "What major industries does Norway have apart from oil?",
+        "Norway's main industries besides oil?",
+        "What does Norway produce other than oil?",
+        "Tell me about Norwegian industries",
+        "Key sectors in Norway's economy?",
+        "Besides oil what drives Norway's economy?"
+      ],
+      "responses": ["Besides oil and gas, Norway has significant industries in hydropower, fishing and aquaculture (especially salmon), maritime shipping, and increasingly, technology and renewable energy."]
+    },
+    {
+      "tag": "edvard_munch",
+      "patterns": [
+        "Who is Edvard Munch?",
+        "Tell me about Edvard Munch",
+        "Famous Norwegian painter Munch?",
+        "What did Edvard Munch paint?",
+        "Information about Edvard Munch",
+        "Is Munch Norwegian?"
+      ],
+      "responses": ["Edvard Munch was a famous Norwegian painter, best known for his iconic work \"The Scream.\""]
+    },
+    {
+      "tag": "henrik_ibsen",
+      "patterns": [
+        "Who is Henrik Ibsen?",
+        "Tell me about Henrik Ibsen",
+        "Famous Norwegian playwright Ibsen?",
+        "What did Henrik Ibsen write?",
+        "Information about Henrik Ibsen",
+        "Father of realism Ibsen?"
+      ],
+      "responses": ["Henrik Ibsen was a highly influential Norwegian playwright, often referred to as the \"father of realism\" in theatre. His major works include \"A Doll's House\" and \"Hedda Gabler.\""]
+    },
+    {
+      "tag": "nobel_peace_prize",
+      "patterns": [
+        "What is the Nobel Peace Prize connection to Norway?",
+        "Why is the Nobel Peace Prize awarded in Oslo?",
+        "Tell me about the Nobel Peace Prize in Norway",
+        "Nobel prize Oslo?",
+        "Norway Nobel connection?",
+        "Which Nobel prize is given in Norway?"
+      ],
+      "responses": ["The Nobel Peace Prize is awarded annually in Oslo, Norway, according to the will of Alfred Nobel. The other Nobel Prizes are awarded in Stockholm, Sweden."]
+    },
+    {
+      "tag": "wildlife",
+      "patterns": [
+        "What kind of wildlife can you see in Norway?",
+        "Animals in Norway?",
+        "Tell me about Norwegian wildlife",
+        "What animals live in Norway?",
+        "Wildlife spotting Norway?",
+        "Common animals found in Norway?"
+      ],
+      "responses": ["Norway has diverse wildlife including reindeer, moose (elk), arctic foxes, lynx, wolverines, puffins, sea eagles, whales, and in Svalbard, polar bears."]
+    },
+    {
+      "tag": "allemannsretten",
+      "patterns": [
+        "What is 'allemannsretten'?",
+        "Explain the right to roam in Norway",
+        "Tell me about allemannsretten",
+        "Right of access Norway?",
+        "Define allemannsretten",
+        "Can I walk anywhere in Norway?"
+      ],
+      "responses": ["Allemannsretten (the right to roam) is a traditional right in Norway (and other Nordic countries) that grants the public rights to access and passage through uncultivated land, regardless of ownership, provided consideration is shown for nature and landowners."]
+    },
+    {
+      "tag": "snowfall",
+      "patterns": [
+        "Does it snow a lot in Norway?",
+        "How much snow does Norway get?",
+        "Snowfall levels in Norway?",
+        "Tell me about snow in Norway",
+        "Is Norway snowy?",
+        "Winter snow Norway?"
+      ],
+      "responses": ["Snowfall varies greatly depending on location and altitude. Coastal areas in the south and west may have milder winters with less snow, while inland areas and the north experience colder winters with significant snowfall, ideal for winter sports."]
+    },
+    {
+      "tag": "gateway_to_fjords",
+      "patterns": [
+        "Which city is known as the 'Gateway to the Fjords'?",
+        "What city is the gateway to fjords?",
+        "Bergen gateway to fjords?",
+        "Tell me which city is the fjord gateway",
+        "City for starting fjord trips?",
+        "Gateway city for fjords?"
+      ],
+      "responses": ["Bergen is often referred to as the 'Gateway to the Fjords' due to its proximity to famous fjords like Hardangerfjord and Sognefjord."]
+    },
+    {
+      "tag": "royal_family_name",
+      "patterns": [
+        "What is the name of the Norwegian Royal Family?",
+        "Norway royal family name?",
+        "Which house does the Norwegian royalty belong to?",
+        "Tell me the name of the royals",
+        "House of Glücksburg Norway?",
+        "King Harald family name?"
+      ],
+      "responses": ["The Norwegian Royal Family belongs to the House of Glücksburg. The current King is Harald V, and the Crown Prince is Haakon."]
+    },
+    {
+      "tag": "tipping",
+      "patterns": [
+        "Is tipping common in Norway?",
+        "Should I tip in Norway?",
+        "Tipping etiquette Norway?",
+        "Tell me about tipping customs in Norway",
+        "Do you tip waiters in Norway?",
+        "How much to tip in Norway?"
+      ],
+      "responses": ["Tipping is not generally expected in Norway as service charges are usually included in bills. However, tipping for exceptional service in restaurants or taxis is appreciated but not obligatory."]
+    },
+    {
+      "tag": "power_plugs",
+      "patterns": [
+        "What power plugs are used in Norway?",
+        "Norway electrical outlet type?",
+        "What kind of adapter do I need for Norway?",
+        "Tell me about power plugs in Norway",
+        "Voltage and plug type Norway?",
+        "Type C or F plugs Norway?"
+      ],
+      "responses": ["Norway uses the standard Europlug (Type C) and Schuko plug (Type F), operating on a 230V supply voltage and 50Hz."]
+    },
+    {
+      "tag": "euro_usage",
+      "patterns": [
+        "Can I use Euros in Norway?",
+        "Do they accept Euros in Norway?",
+        "Is Euro accepted currency in Norway?",
+        "Tell me if I can pay with Euros",
+        "Using Euros Norway?",
+        "Should I bring Euros or Krone?"
+      ],
+      "responses": ["While some tourist areas might accept Euros, the official currency is the Norwegian Krone (NOK), and it's best to use NOK for most transactions. Credit/debit cards are widely accepted."]
+    },
+    {
+      "tag": "fishing_popularity",
+      "patterns": [
+        "Is fishing popular in Norway?",
+        "Do people fish a lot in Norway?",
+        "How popular is fishing?",
+        "Tell me about fishing in Norway",
+        "Recreational fishing Norway?",
+        "Is Norway good for fishing?"
+      ],
+      "responses": ["Yes, both coastal and freshwater fishing are very popular recreational activities in Norway, thanks to its long coastline and numerous lakes and rivers."]
+    }
+  ]
+}

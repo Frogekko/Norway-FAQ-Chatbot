@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ bot_name }} - Chatbot</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+</head>
+<body>
+  <div class="chat-container">
+    <h1>Welcome to {{ bot_name }} Chat!</h1>
+    <div id="chat-box" class="chat-box"></div>
+    <form id="chat-form">
+      <input type="text" id="user-input" placeholder="Type your message..." required />
+      <input type="number" id="max-length-input" placeholder="Max Response Length" value="20" min="5" max="100" />
+      <button type="submit">Send</button>
+    </form>
+
+  </div>
+  <script>
+    const bot_name = "{{ bot_name }}";
+  </script>
+  <script src="{{ url_for('static', filename='ChatScript.js') }}"></script>
+</body>
+</html>
