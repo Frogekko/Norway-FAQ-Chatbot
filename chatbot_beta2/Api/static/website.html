@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ bot_name }} - Chatbot</title>
+  <style>
+    /* Basic Dark Mode Styling */
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #121212; /* Dark background */
+      color: #e0e0e0; /* Light text */
+    }
+    .chat-container {
+      background-color: #1e1e1e; /* Slightly lighter dark */
+      border: 1px solid #333; /* Darker border */
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4); /* Adjusted shadow */
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+    }
+    .chat-box {
+      flex-grow: 1;
+      border: 1px solid #333;
+      margin-bottom: 15px;
+      padding: 15px;
+      overflow-y: auto;
+      background-color: #242424; /* Darker chat background */
+      border-radius: 4px;
+    }
+    .message {
+      margin-bottom: 12px;
+      padding: 10px 15px;
+      border-radius: 18px;
+      line-height: 1.4;
+      max-width: 80%;
+      word-wrap: break-word;
+      clear: both;
+      position: relative;
+      color: #e0e0e0; /* Ensure message text is light */
+    }
+    .user {
+      background-color: #054740; /* Dark green/teal */
+      float: right;
+      border-bottom-right-radius: 5px;
+      color: #fff; /* White text on dark green */
+    }
+    .bot {
+      background-color: #3a3a3c; /* Dark grey */
+      float: left;
+      border-bottom-left-radius: 5px;
+      color: #e0e0e0; /* Light text on dark grey */
+    }
+    .message::after {
+        content: "";
+        display: table;
+        clear: both;
+     }
+    #chat-form {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      border-top: 1px solid #333; /* Darker border */
+      padding-top: 15px;
+    }
+    #user-input {
+      flex-grow: 1;
+      padding: 12px 15px;
+      border: 1px solid #555; /* Lighter dark border */
+      border-radius: 20px;
+      background-color: #333; /* Dark input background */
+      color: #e0e0e0; /* Light text in input */
+      outline: none;
+    }
+     #user-input:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 1px rgba(0, 123, 255, 0.25);
+     }
+    #chat-form button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #007bff; /* Blue can work on dark */
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+     #chat-form button:hover {
+      background-color: #0056b3;
+     }
+    h1 {
+      text-align: center;
+      color: #e0e0e0; /* Light heading */
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <h1>Welcome to {{ bot_name }} Chat!</h1>
+
+    <div id="chat-box" class="chat-box">
+      <div class="message bot">Hello! Ask me something about Norway.</div>
+    </div>
+    <form id="chat-form">
+      <input type="text" id="user-input" placeholder="Type your message..." required autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    // Pass bot_name from Flask template to JavaScript global scope
+    const bot_name = "{{ bot_name }}";
+
+    // Get references to HTML elements
+    const chatForm = document.getElementById("chat-form");
+    const userInput = document.getElementById("user-input");
+    const chatBox = document.getElementById("chat-box");
+
+    // Event listener for form submission
+    chatForm.addEventListener("submit", async function(e) {
+      e.preventDefault(); // Prevent default form submission behavior
+
+      const message = userInput.value.trim(); // Get user message and remove whitespace
+
+      if (!message) return; // Don't send empty messages
+
+      addMessage("user", message); // Display user message immediately
+      userInput.value = ""; // Clear the input field
+
+      // Show typing indicator for the bot
+      addMessage("bot", bot_name + " is typing...");
+      // Get a reference to the "typing..." message bubble to update it later
+      const loadingMsgElement = chatBox.querySelector(".message.bot:last-child");
+
+      // Check if the element was actually found before proceeding (Keep this check)
+      if (!loadingMsgElement) {
+          console.error("CRITICAL: Could not find the 'typing...' message element to update!");
+          return; // Stop if we can't update the placeholder
+      }
+
+      try {
+        // Send the user message to the backend API
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: message })
+        });
+
+        // Check if the server response is ok (status code 200-299)
+        if (!res.ok) {
+             let errorData;
+             try { errorData = await res.json(); } catch (jsonError) { errorData = { Error: "Unknown server error." }; }
+             // Throw error to be caught by the catch block below
+             throw new Error(`HTTP error! status: ${res.status} - ${errorData.Error || res.statusText}`);
+        }
+
+        const data = await res.json(); // Parse the JSON response from the server
+
+        // Update the "typing..." message bubble with the actual response from the bot
+        // Make sure JS accesses the correct key ('Response' based on Python code)
+        loadingMsgElement.textContent = `${data.bot_name}: ${data.Response || "Sorry, I received an empty response."}`;
+
+      } catch (err) {
+        // This block catches errors from fetch itself OR the 'throw new Error' above
+        console.error("Error fetching chat response:", err); // Keep minimal error logging
+        // Update the "typing..." message bubble with an error message
+        loadingMsgElement.textContent = `${bot_name}: Sorry, an error occurred. Please try again.`;
+      }
+    }); // <-- Correct closing brace and parenthesis for addEventListener callback
+
+    // Function to add a message (user or bot) to the chat box display
+    function addMessage(sender, text) {
+      const msgDiv = document.createElement("div");
+      msgDiv.classList.add("message", sender);
+      msgDiv.textContent = text;
+      chatBox.appendChild(msgDiv);
+      // Scroll the chat box to the bottom to show the latest message
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+  </script> </body>
+</html>

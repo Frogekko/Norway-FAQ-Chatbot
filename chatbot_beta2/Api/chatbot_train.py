@@ -2,16 +2,14 @@ import json
 import numpy as np
 import nltk
 import torch
-import queue
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-from chatbot_nltk_utils import get_wordnet_pos, tokenize, lem, bag_of_words    # Imports the functions from out utilities file
-from model import NeuralNet
-
-
+from .chatbot_nltk_utils import get_wordnet_pos, tokenize, lem, bag_of_words    # Imports the functions from out utilities file
+from .model import NeuralNet
+#from sklearn.model_selection import train_test_split
 
 # Loads the intents file
-with open(intents_file, 'r', encoding='utf-8') as f:
+with open('intents.json', 'r', encoding='utf-8') as f:
     intents = json.load(f)
 
 all_words = []    # Will store unique lemmas
@@ -21,6 +19,7 @@ xy = []    # Stores tuples of (tokens, tags)
 # Ignore these symbols
 ignore_words = ['?', '!', '.', ',', "'s", "'", '(', ')', '/', '"']
 
+print("Processing intents...")
 # Loop through each sentence in our intents patterns
 for intent in intents['intents']:
     tag = intent['tag'] 
@@ -44,6 +43,10 @@ for intent in intents['intents']:
 all_words = sorted(set(all_words))
 tags = sorted(set(tags))
 
+# Test
+#print(all_words)
+#print(tags)
+
 # Create the training data
 X_train = []
 y_train = []
@@ -58,8 +61,18 @@ X_train = np.array(X_train)
 y_train = np.array(y_train)
 
 # Hyperparameters
+batch_size = 32
+hidden_size = 32
 input_size = len(all_words)
 output_size = len(tags)
+learning_rate = 0.0001
+num_epochs = 500
+
+# Test
+#print(input_size)
+#print(len(all_words))
+#print(output_size)
+#print(len(tags))
 
 # Class for out dataset
 class ChatDataset(Dataset):
@@ -70,10 +83,10 @@ class ChatDataset(Dataset):
 
     def __getitem__(self, idx):
         return self.x_data[idx], self.y_data[idx]
-        
+    
     def __len__(self):
         return self.n_samples
-        
+    
 
 dataset = ChatDataset()
 train_loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True)
@@ -99,11 +112,10 @@ for epoch in range(num_epochs):
         loss.backward()
         optimizer.step()
 
-    if message and isinstance(message, queue.Queue) and (epoch + 1) % 100 == 0:
+    if (epoch + 1) % 100 == 0:
         print(f'epoch {epoch+1}/{num_epochs}, loss={loss.item():.4f}')
 
-if message and isinstance(message, queue.Queue):
-    print(f'Final loss, loss={loss.item():.4f}')
+print(f'Final loss, loss={loss.item():.4f}')
 
 # Save the data
 data = {
@@ -113,9 +125,9 @@ data = {
     "hidden_size": hidden_size,
     "all_words": all_words,
     "tags": tags
-    }
+}
 
 FILE ="model.pth"
 torch.save(data, FILE)
-if message and isinstance(message, queue.Queue):
-    print(f"Training Complete, File saved to {FILE}")
+
+print(f"Training Complete, File saved to {FILE}")
