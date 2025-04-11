@@ -1,10 +1,8 @@
 from flask import Flask, request, jsonify, render_template, Response
-from threading import Thread
-import queue
 import os
 from chat import generations, bot_name
 
-loq_queue = queue.Queue()
+#This ensures that it can read the file from any PC
 basedir = os.path.abspath(os.path.dirname(__file__))
 template_dir = os.path.join(basedir, "static")
 
@@ -12,7 +10,7 @@ def create_app():
     #Initializes flask with template directory
     app = Flask(__name__, template_folder=template_dir)
 
-    @app.route("/") #creates 
+    @app.route("/") #this code reads the website HTML
     def index():
         return render_template("website.html", bot_name = bot_name) #puts the bot name in the html frontend
     
