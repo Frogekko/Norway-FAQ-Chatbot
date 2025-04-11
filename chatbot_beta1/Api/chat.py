@@ -2,8 +2,8 @@ import random
 import json
 import torch
 import os
-from model import NeuralNet
-from chatbot_nltk_utils import bag_of_words, tokenize
+from .model import NeuralNet
+from .chatbot_nltk_utils import bag_of_words, tokenize
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -38,6 +38,7 @@ fallback_suggestions = [
     "Hmm, I don't have information on that specific query. Why not ask about Norway's highest mountain, the Midnight Sun, the Vikings, or whether you need a visa?",
     "I couldn't find a direct answer. Maybe rephrase, or ask about something else? For example, I know about the emergency numbers, tap water safety, popular dishes, or the national day (May 17th)."
     ]
+print("Welcome to the Norway FAQ Chatbot Mímir! (type 'quit' to exit)")
 
 def generations(message):
     sentence = tokenize(message)
@@ -52,7 +53,7 @@ def generations(message):
 
     probs = torch.softmax(output, dim=1)
     prob = probs[0][predicted.item()]
-    if prob.item() > 0.60:
+    if prob.item() > 0.70:
         for intent in intents['intents']:
             if tag == intent["tag"]:
                 return {"bot_name": bot_name, "Response": random.choice(intent["responses"])}
